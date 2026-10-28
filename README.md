@@ -1,5 +1,13 @@
 # 📦 Agentic RAG Customer Service Assistant (Amazon Shipping & Orders)
 
+[![Live Web App](https://img.shields.io/badge/Live%20Demo-Render-00b87c?style=for-the-badge&logo=render)](https://agentic-rag-customer-service.onrender.com)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/debanjan-steel/Agentic-RAG-app-Customer-Service)
+
+> **🌐 Live Deployment Link:** [https://agentic-rag-customer-service.onrender.com](https://agentic-rag-customer-service.onrender.com)  
+> *(If your specific Render URL has a unique suffix from your dashboard, simply replace this link).*
+
+---
+
 An autonomous **Agentic RAG** (Retrieval-Augmented Generation) customer support system for Amazon shipping policies and live order tracking. Built with **LangGraph**, **Google Gemini**, **ChromaDB**, and **FastAPI**, featuring both an interactive web application and a terminal CLI.
 
 ---
@@ -146,3 +154,4 @@ This repository includes [`render.yaml`](./render.yaml) and [`Procfile`](./Procf
    * **Key:** `GEMINI_API_KEY`
    * **Value:** `your-api-key`
 4. Click **Deploy Web Service** to get a 24/7 live public URL.
+
