@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: agentic-rag-customer-service
+    name: agentic-rag-app-customer-service
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python server.py
