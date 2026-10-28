@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Customer Service Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Top Amazon Header Bar -->
+    <header class="amz-header">
+        <div class="amz-header-inner">
+            <div class="amz-brand">
+                <span class="amz-logo">amazon<span class="amz-smile">.com</span></span>
+                <span class="amz-service-badge">Customer Service</span>
+            </div>
+
+            <div class="amz-deliver-to">
+                <span class="deliver-sub">Deliver to</span>
+                <span class="deliver-main">📍 United States</span>
+            </div>
+
+            <div class="amz-search-bar">
+                <input type="text" id="helpSearchInput" placeholder="Search our help library (e.g. shipping fees, locker pickup, delays)...">
+                <button id="helpSearchBtn" aria-label="Search">🔍</button>
+            </div>
+
+            <div class="amz-nav-right">
+                <div class="amz-nav-item">
+                    <span class="nav-line-1">Hello, Customer</span>
+                    <span class="nav-line-2">Account & Lists</span>
+                </div>
+                <div class="amz-nav-item">
+                    <span class="nav-line-1">Returns</span>
+                    <span class="nav-line-2">& Orders</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub-Navigation Ribbon -->
+        <nav class="amz-subnav">
+            <a href="#" class="subnav-link active">Customer Service Home</a>
+            <a href="#" class="subnav-link" id="quickTrackNav">Where's My Stuff</a>
+            <a href="#" class="subnav-link" id="quickRatesNav">Shipping Rates & Policies</a>
+            <a href="#" class="subnav-link" id="quickLockersNav">Amazon Pickup Locations</a>
+            <a href="#" class="subnav-link" id="quickDelaysNav">Carrier Delays & 48h Buffer</a>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="amz-main-container">
+        <!-- Left Sidebar: Account & Quick Actions -->
+        <aside class="amz-sidebar">
+            <!-- Interactive Your Orders Card -->
+            <div class="sidebar-card order-status-card">
+                <div class="card-header">
+                    <span class="card-title">📦 Your Orders in Memory (8)</span>
+                    <span class="status-pill status-ready">Select to Track</span>
+                </div>
+                <div class="orders-accordion-list">
+                    <!-- Order 1: Delayed -->
+                    <div class="order-mini-card" data-query="Track Order 112-9874561-3456789">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">🎧 Sony WH-1000XM5 ($349.99)</span>
+                            <span class="badge-mini badge-delayed">Delayed</span>
+                        </div>
+                        <span class="order-mini-id">#112-9874561-3456789</span>
+                    </div>
+
+                    <!-- Order 2: Out for Delivery -->
+                    <div class="order-mini-card" data-query="Track Order 114-1234567-7654321">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">📖 Kindle Paperwhite ($149.99)</span>
+                            <span class="badge-mini badge-transit">Out for Delivery</span>
+                        </div>
+                        <span class="order-mini-id">#114-1234567-7654321</span>
+                    </div>
+
+                    <!-- Order 3: Locker Pickup -->
+                    <div class="order-mini-card" data-query="Track Order 113-5544332-9988776">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">👟 Nike Pegasus Shoes ($129.00)</span>
+                            <span class="badge-mini badge-locker">In Amazon Locker</span>
+                        </div>
+                        <span class="order-mini-id">#113-5544332-9988776</span>
+                    </div>
+
+                    <!-- Order 4: Preparing Shipment -->
+                    <div class="order-mini-card" data-query="Track Order 111-7788990-1122334">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">📱 Apple iPad Air M2 ($599.00)</span>
+                            <span class="badge-mini badge-prep">Preparing</span>
+                        </div>
+                        <span class="order-mini-id">#111-7788990-1122334</span>
+                    </div>
+
+                    <!-- Order 5: Customs Clearance -->
+                    <div class="order-mini-card" data-query="Track Order 115-4433221-5566778">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">☕ De'Longhi Espresso ($699.95)</span>
+                            <span class="badge-mini badge-customs">Customs Hold</span>
+                        </div>
+                        <span class="order-mini-id">#115-4433221-5566778</span>
+                    </div>
+
+                    <!-- Order 6: Marked Delivered -->
+                    <div class="order-mini-card" data-query="Track Order 116-2233445-6677889">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">🧥 North Face Jacket ($220.00)</span>
+                            <span class="badge-mini badge-deliv">Delivered / Porch</span>
+                        </div>
+                        <span class="order-mini-id">#116-2233445-6677889</span>
+                    </div>
+
+                    <!-- Order 7: Returned & Refunded -->
+                    <div class="order-mini-card" data-query="Track Order 117-6655443-2211009">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">🚀 Lego Falcon ($169.99)</span>
+                            <span class="badge-mini badge-refund">Refunded</span>
+                        </div>
+                        <span class="order-mini-id">#117-6655443-2211009</span>
+                    </div>
+
+                    <!-- Order 8: Same-Day Delivery -->
+                    <div class="order-mini-card" data-query="Track Order 118-9900112-3344556">
+                        <div class="order-mini-header">
+                            <span class="order-item-title">⚡ Anker 100W Fast Charger ($45.99)</span>
+                            <span class="badge-mini badge-sameday">Same-Day Prime</span>
+                        </div>
+                        <span class="order-mini-id">#118-9900112-3344556</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 12px;">
+                    <button class="amz-btn-secondary" style="flex: 1;" data-query="show all orders loaded in memory">📋 View All</button>
+                    <button class="amz-btn-secondary" style="flex: 1;" data-query="i want to talk about a different order">🔄 Switch</button>
+                </div>
+            </div>
+
+            <!-- Quick Topics Grid -->
+            <div class="sidebar-card">
+                <div class="card-header">
+                    <span class="card-title">Shipping & Delivery Topics</span>
+                </div>
+                <ul class="topic-list">
+                    <li class="topic-item" data-query="What is Amazon's Guaranteed Delivery policy and what if it's late?">
+                        <span class="topic-icon">⏱️</span>
+                        <div class="topic-info">
+                            <strong>Delivery Guarantees</strong>
+                            <span>Refund terms if late</span>
+                        </div>
+                    </li>
+                    <li class="topic-item" data-query="What shipping benefits do Amazon Prime members get?">
+                        <span class="topic-icon">⚡</span>
+                        <div class="topic-info">
+                            <strong>Prime Shipping Benefits</strong>
+                            <span>One-Day, Same-Day cutoffs</span>
+                        </div>
+                    </li>
+                    <li class="topic-item" data-query="How much do I need to spend for free standard shipping if I am not a Prime member?">
+                        <span class="topic-icon">📦</span>
+                        <div class="topic-info">
+                            <strong>Shipping Rates & Speeds</strong>
+                            <span>Non-Prime $35 minimum</span>
+                        </div>
+                    </li>
+                    <li class="topic-item" data-query="How many days do I have to pick up a package from an Amazon Locker?">
+                        <span class="topic-icon">🏬</span>
+                        <div class="topic-info">
+                            <strong>Amazon Lockers & Counters</strong>
+                            <span>3-day vs 7-day pickup window</span>
+                        </div>
+                    </li>
+                    <li class="topic-item" data-query="What is the 48-hour buffer policy for delayed shipments?">
+                        <span class="topic-icon">⏳</span>
+                        <div class="topic-info">
+                            <strong>The 48-Hour Buffer Policy</strong>
+                            <span>When replacements/refunds trigger</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Right Main: Amazon Messaging Assistant (RAG Chatbot) -->
+        <section class="amz-chat-section">
+            <div class="chat-window-card">
+                <!-- Chat Window Header -->
+                <div class="chat-header">
+                    <div class="assistant-profile">
+                        <div class="avatar-ring">
+                            <span class="avatar-emoji">📦</span>
+                            <span class="online-dot"></span>
+                        </div>
+                        <div class="profile-text">
+                            <h3>Amazon Customer Support Assistant</h3>
+                            <span class="sub-text">Powered by LangGraph Agentic RAG • Gemini 3.5</span>
+                        </div>
+                    </div>
+                    <div class="header-badges">
+                        <span class="langgraph-pill">⚡ Active LangGraph Workflow</span>
+                        <button class="clear-chat-btn" id="clearChatBtn" title="Restart Session">↺ New Chat</button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages Feed -->
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Initial Welcome Message -->
+                    <div class="message-wrapper assistant">
+                        <div class="msg-avatar">📦</div>
+                        <div class="msg-bubble">
+                            <div class="msg-content">
+                                Hello! I'm your dedicated <strong>Amazon Customer Support Assistant</strong> specializing in <strong>Shipping and Delivery</strong>.
+                                <br><br>
+                                I can help you check live package tracking, explain delivery guarantees, manage pickup lockers, or immediately resolve shipping delays with instant refunds, free replacements, or phone callbacks.
+                                <br><br>
+                                How can I assist you with your shipment today?
+                            </div>
+                            <div class="quick-chips">
+                                <button class="chip" data-query="why is my delivery delayed?">Why is my delivery delayed?</button>
+                                <button class="chip" data-query="What happens if my guaranteed delivery order arrives late?">Guaranteed delivery refund rules</button>
+                                <button class="chip" data-query="How many days do I have to pick up an order from an Amazon Locker?">Amazon Locker pickup window</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="typing-indicator" id="typingIndicator">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="typing-label">Assistant is routing & reasoning...</span>
+                </div>
+
+                <!-- Quick Action Chips Bar -->
+                <div class="chat-quick-actions" id="quickActionChips">
+                    <span class="action-label">Quick Suggestions:</span>
+                    <button class="chip-sm" data-query="why is my delivery delayed?">📦 Track Delayed Order</button>
+                    <button class="chip-sm" data-query="I can't wait 48 hours, I need this resolved right now!">⚡ Urgent: Need Resolution Now</button>
+                    <button class="chip-sm" data-query="Option 1">1️⃣ Option 1: Free Replacement</button>
+                    <button class="chip-sm" data-query="Option 2">2️⃣ Option 2: Instant Refund</button>
+                    <button class="chip-sm" data-query="Option 3">3️⃣ Option 3: Phone Callback</button>
+                </div>
+
+                <!-- Chat Input Form -->
+                <form class="chat-input-form" id="chatForm">
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        placeholder="Type your question or issue (e.g. 'why is my package delayed?' or 'Option 2')..." 
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" class="amz-btn-primary" id="sendBtn">
+                        <span>Send</span>
+                        <span class="send-icon">➤</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="amz-footer">
+        <div class="footer-inner">
+            <span>© 1996-2026, Amazon.com, Inc. or its affiliates • Customer Service Agentic RAG System</span>
+            <div class="footer-links">
+                <a href="#">Conditions of Use</a>
+                <a href="#">Privacy Notice</a>
+                <a href="#">Consumer Health Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

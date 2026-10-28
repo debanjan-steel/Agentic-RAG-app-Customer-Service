@@ -1,0 +1,590 @@
+[
+  {
+    "timestamp": "2026-10-25T17:21:56.206253",
+    "query": "why is my delivery delayed?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Request Order ID"
+    ],
+    "response": "Hello! I would be happy to check the exact status and location of your delayed package.\n\nTo look up your live tracking details, could you please provide your 17-digit Amazon Order ID (for example: 112-9874561-3456789) or your carrier tracking number?\n\n[Demo tip: You can test with sample order ID: 112-9874561-3456789]"
+  },
+  {
+    "timestamp": "2026-10-25T17:22:08.541963",
+    "query": "Order 112-9874561-3456789 why is it delayed?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:22:21.549010",
+    "query": "What is the 48-hour buffer policy for delayed shipments?",
+    "intent": "policy_query",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: POLICY_QUERY",
+      "2. Retrieve Chunks from Vector DB",
+      "-> Retrieved 3 chunks (top distance: 0.2129)",
+      "3. Document Relevance Grader",
+      "-> Grader approved docs: Top distance 0.2129 is within relevance threshold.",
+      "4. Grounded Response Generation"
+    ],
+    "response": "Based on the **Carrier Delays And Tracking** document, under the **Recommended Waiting Period (The 48-Hour Buffer)** section, the policy states:\n\n* If your package has not arrived by the estimated delivery date, please allow an additional **48 business hours** for late transit scans to update.\n* If the tracking status does not update after 48 hours past the original estimated delivery date, you should contact Customer Support with your Order ID to initiate an investigation, request a free replacement, or issue a full refund."
+  },
+  {
+    "timestamp": "2026-10-25T17:23:22.686915",
+    "query": "where is my package?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Request Order ID"
+    ],
+    "response": "Hello! I would be happy to check the exact status and location of your delayed package.\n\nTo look up your live tracking details, could you please provide your 17-digit Amazon Order ID (for example: 112-9874561-3456789) or your carrier tracking number?\n\n[Demo tip: You can test with sample order ID: 112-9874561-3456789]"
+  },
+  {
+    "timestamp": "2026-10-25T17:23:34.582488",
+    "query": "112-9874561-3456789",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:26:04.406713",
+    "query": "it said please give 48 hours to track updates, what if i want a direct now reply?",
+    "intent": "urgent_escalation",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: URGENT_ESCALATION",
+      "2. Instant Escalation Handler"
+    ],
+    "response": "I completely understand this is urgent and waiting does not work for you!\nSince Order #112-9874561-3456789 has exceeded its guaranteed delivery schedule, I can take care of this for you immediately right now:\n\n1. [Option 1] - Dispatch a Free Replacement: I will create a new replacement order with complimentary Priority One-Day Shipping to arrive tomorrow.\n2. [Option 2] - Issue an Instant Full Refund: I will cancel this shipment and process an immediate refund of $349.99 to your original payment method.\n3. [Option 3] - Request a Live Phone Callback: A supervisor from our Logistics Escalation team will call your phone in under 2 minutes.\n\nPlease reply with 'Option 1', 'Option 2', or 'Option 3' and I will process it immediately!"
+  },
+  {
+    "timestamp": "2026-10-25T17:26:14.289370",
+    "query": "Option 2 please",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Refund)",
+      "2. Action Execution Engine (REFUND)"
+    ],
+    "response": "[ACTION COMPLETED: INSTANT REFUND PROCESSED]\n\nI have canceled shipment #112-9874561-3456789 and processed your full refund!\n- Refund Reference: REF-8492019-AMZ\n- Amount Refunded: $349.99\n- Destination: Original Visa credit card (ending in -1092)\n- Timeline: Funds will reflect in your account within 1 to 3 business days depending on your bank.\n\nWe sincerely apologize for the shipping delay. Is there anything else I can help with?"
+  },
+  {
+    "timestamp": "2026-10-25T17:26:24.074128",
+    "query": "have someone call my phone",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Live Callback)",
+      "2. Action Execution Engine (CALLBACK)"
+    ],
+    "response": "[ACTION COMPLETED: LIVE AGENT CALLBACK INITIATED]\n\nI have connected your inquiry regarding Order #112-9874561-3456789 directly to our Senior Logistics Escalation Desk.\n- Estimated Wait Time: Under 2 minutes\n- Destination: Your registered account phone number (ending in -4829)\n- Agent Dossier: The supervisor will already have your tracking history and delay logs ready when they ring.\n\nPlease keep your phone nearby. Thank you for your patience!"
+  },
+  {
+    "timestamp": "2026-10-25T17:27:12.337924",
+    "query": "where is my order?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:27:24.226326",
+    "query": "i cannot wait that long give me update right now",
+    "intent": "urgent_escalation",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: URGENT_ESCALATION",
+      "2. Instant Escalation Handler"
+    ],
+    "response": "I completely understand this is urgent and waiting does not work for you!\nSince Order #112-9874561-3456789 has exceeded its guaranteed delivery schedule, I can take care of this for you immediately right now:\n\n1. [Option 1] - Dispatch a Free Replacement: I will create a new replacement order with complimentary Priority One-Day Shipping to arrive tomorrow.\n2. [Option 2] - Issue an Instant Full Refund: I will cancel this shipment and process an immediate refund of $349.99 to your original payment method.\n3. [Option 3] - Request a Live Phone Callback: A supervisor from our Logistics Escalation team will call your phone in under 2 minutes.\n\nPlease reply with 'Option 1', 'Option 2', or 'Option 3' and I will process it immediately!"
+  },
+  {
+    "timestamp": "2026-10-25T17:27:45.051805",
+    "query": "i am not willing to choose any option give me a full refund",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Refund)",
+      "2. Action Execution Engine (REFUND)"
+    ],
+    "response": "[ACTION COMPLETED: INSTANT REFUND PROCESSED]\n\nI have canceled shipment #112-9874561-3456789 and processed your full refund!\n- Refund Reference: REF-8492019-AMZ\n- Amount Refunded: $349.99\n- Destination: Original Visa credit card (ending in -1092)\n- Timeline: Funds will reflect in your account within 1 to 3 business days depending on your bank.\n\nWe sincerely apologize for the shipping delay. Is there anything else I can help with?"
+  },
+  {
+    "timestamp": "2026-10-25T17:28:12.815284",
+    "query": "you are a bot can you cancel shipment with any autority permission?",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Refund)",
+      "2. Action Execution Engine (REFUND)"
+    ],
+    "response": "[ACTION COMPLETED: INSTANT REFUND PROCESSED]\n\nI have canceled shipment #112-9874561-3456789 and processed your full refund!\n- Refund Reference: REF-8492019-AMZ\n- Amount Refunded: $349.99\n- Destination: Original Visa credit card (ending in -1092)\n- Timeline: Funds will reflect in your account within 1 to 3 business days depending on your bank.\n\nWe sincerely apologize for the shipping delay. Is there anything else I can help with?"
+  },
+  {
+    "timestamp": "2026-10-25T17:28:55.094037",
+    "query": "ok i dont want a refund dont cancel my order",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Refund)",
+      "2. Action Execution Engine (REFUND)"
+    ],
+    "response": "[ACTION COMPLETED: INSTANT REFUND PROCESSED]\n\nI have canceled shipment #112-9874561-3456789 and processed your full refund!\n- Refund Reference: REF-8492019-AMZ\n- Amount Refunded: $349.99\n- Destination: Original Visa credit card (ending in -1092)\n- Timeline: Funds will reflect in your account within 1 to 3 business days depending on your bank.\n\nWe sincerely apologize for the shipping delay. Is there anything else I can help with?"
+  },
+  {
+    "timestamp": "2026-10-25T17:29:37.346573",
+    "query": "where is my order?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:29:53.262293",
+    "query": "i cant wait that long give me a update right now",
+    "intent": "urgent_escalation",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: URGENT_ESCALATION",
+      "2. Instant Escalation Handler"
+    ],
+    "response": "I completely understand this is urgent and waiting does not work for you!\nSince Order #112-9874561-3456789 has exceeded its guaranteed delivery schedule, I can take care of this for you immediately right now:\n\n1. [Option 1] - Dispatch a Free Replacement: I will create a new replacement order with complimentary Priority One-Day Shipping to arrive tomorrow.\n2. [Option 2] - Issue an Instant Full Refund: I will cancel this shipment and process an immediate refund of $349.99 to your original payment method.\n3. [Option 3] - Request a Live Phone Callback: A supervisor from our Logistics Escalation team will call your phone in under 2 minutes.\n\nPlease reply with 'Option 1', 'Option 2', or 'Option 3' and I will process it immediately!"
+  },
+  {
+    "timestamp": "2026-10-25T17:30:05.138884",
+    "query": "i want to request a live phone call option 3",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Live Callback)",
+      "2. Action Execution Engine (CALLBACK)"
+    ],
+    "response": "[ACTION COMPLETED: LIVE AGENT CALLBACK INITIATED]\n\nI have connected your inquiry regarding Order #112-9874561-3456789 directly to our Senior Logistics Escalation Desk.\n- Estimated Wait Time: Under 2 minutes\n- Destination: Your registered account phone number (ending in -4829)\n- Agent Dossier: The supervisor will already have your tracking history and delay logs ready when they ring.\n\nPlease keep your phone nearby. Thank you for your patience!"
+  },
+  {
+    "timestamp": "2026-10-25T17:30:30.168912",
+    "query": "nevermind i would like to cancel my order and get a full refund",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Refund)",
+      "2. Action Execution Engine (REFUND)"
+    ],
+    "response": "[ACTION COMPLETED: INSTANT REFUND PROCESSED]\n\nI have canceled shipment #112-9874561-3456789 and processed your full refund!\n- Refund Reference: REF-8492019-AMZ\n- Amount Refunded: $349.99\n- Destination: Original Visa credit card (ending in -1092)\n- Timeline: Funds will reflect in your account within 1 to 3 business days depending on your bank.\n\nWe sincerely apologize for the shipping delay. Is there anything else I can help with?"
+  },
+  {
+    "timestamp": "2026-10-25T17:30:49.971647",
+    "query": "i would like to give you 1 star rating amazon is a waste of time",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Replacement)",
+      "2. Action Execution Engine (REPLACEMENT)"
+    ],
+    "response": "[ACTION COMPLETED: FREE REPLACEMENT DISPATCHED]\n\nI have initiated a priority replacement for Order #112-9874561-3456789!\n- New Replacement Order ID: #114-8889999-4455667\n- Item: Sony WH-1000XM5 Headphones\n- Shipping Speed: Priority One-Day (Complimentary)\n- Guaranteed Delivery: Tomorrow by 8:00 PM\n- Confirmation: A confirmation receipt has been sent to your registered email address.\n\nIs there anything else I can assist you with today?"
+  },
+  {
+    "timestamp": "2026-10-25T17:35:23.875814",
+    "query": "i had ordered another packages which says delivered but i have not yet received it",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:35:48.817250",
+    "query": "i want to talk about a different order",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:35:57.062400",
+    "query": "why is my package delayed?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:39:18.235163",
+    "query": "Order 112-9874561-3456789 why is it delayed and when will it arrive?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n- Item: Sony WH-1000XM5 Headphones\n- Status: [DELAYED IN TRANSIT] - Delayed in Transit\n- Carrier: UPS (Tracking: 1Z999AA10123456784)\n- Specific Reason: Severe winter weather grounding flights at Louisville, KY distribution hub\n- Revised Delivery: Tomorrow by 8:00 PM\n\nNext Steps: Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued."
+  },
+  {
+    "timestamp": "2026-10-25T17:39:33.354339",
+    "query": "i want information right now",
+    "intent": "urgent_escalation",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: URGENT_ESCALATION",
+      "2. Instant Escalation Handler"
+    ],
+    "response": "I completely understand this is urgent and waiting does not work for you!\nSince Order #112-9874561-3456789 has exceeded its guaranteed delivery schedule, I can take care of this for you immediately right now:\n\n1. [Option 1] - Dispatch a Free Replacement: I will create a new replacement order with complimentary Priority One-Day Shipping to arrive tomorrow.\n2. [Option 2] - Issue an Instant Full Refund: I will cancel this shipment and process an immediate refund of $349.99 to your original payment method.\n3. [Option 3] - Request a Live Phone Callback: A supervisor from our Logistics Escalation team will call your phone in under 2 minutes.\n\nPlease reply with 'Option 1', 'Option 2', or 'Option 3' and I will process it immediately!"
+  },
+  {
+    "timestamp": "2026-10-25T17:39:37.365791",
+    "query": "option 2",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Refund)",
+      "2. Action Execution Engine (REFUND)"
+    ],
+    "response": "[ACTION COMPLETED: INSTANT REFUND PROCESSED]\n\nI have canceled shipment #112-9874561-3456789 and processed your full refund!\n- Refund Reference: REF-8492019-AMZ\n- Amount Refunded: $349.99\n- Destination: Original Visa credit card (ending in -1092)\n- Timeline: Funds will reflect in your account within 1 to 3 business days depending on your bank.\n\nWe sincerely apologize for the shipping delay. Is there anything else I can help with?"
+  },
+  {
+    "timestamp": "2026-10-25T17:40:02.614268",
+    "query": "never mind i dont want to refund my package dont cancel it",
+    "intent": "action_execution",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ACTION_EXECUTION (Refund)",
+      "2. Action Execution Engine (REFUND)"
+    ],
+    "response": "[ACTION COMPLETED: INSTANT REFUND PROCESSED]\n\nI have canceled shipment #112-9874561-3456789 and processed your full refund!\n- Refund Reference: REF-8492019-AMZ\n- Amount Refunded: $349.99\n- Destination: Original Visa credit card (ending in -1092)\n- Timeline: Funds will reflect in your account within 1 to 3 business days depending on your bank.\n\nWe sincerely apologize for the shipping delay. Is there anything else I can help with?"
+  },
+  {
+    "timestamp": "2026-10-25T17:45:47.803844",
+    "query": "i want to talk about a different order",
+    "intent": "switch_order",
+    "steps": [
+      "1. Intent Routing",
+      "-> Customer requested to switch orders; cleared previous order memory",
+      "2. Switch Order Handler (Memory Cleared)"
+    ],
+    "response": "Certainly! I have cleared your previous order details from this session.\n\nPlease provide the 17-digit Order ID (for example: `114-1234567-7654321`) or carrier tracking number for the different order you would like to discuss."
+  },
+  {
+    "timestamp": "2026-10-25T17:45:58.342378",
+    "query": "Order 114-1234567-7654321",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n- Item: Kindle Paperwhite\n- Status: [DELAYED IN TRANSIT] - Out for Delivery\n- Carrier: Amazon Logistics (Tracking: TBA123456789000)\n- Specific Reason: Loaded onto Amazon delivery van\n- Revised Delivery: Today by 9:00 PM\n\nNext Steps: Driver is 4 stops away."
+  },
+  {
+    "timestamp": "2026-10-25T17:46:09.431037",
+    "query": "I want to check another order",
+    "intent": "switch_order",
+    "steps": [
+      "1. Intent Routing",
+      "-> Customer requested to switch orders; cleared previous order memory",
+      "2. Switch Order Handler (Memory Cleared)"
+    ],
+    "response": "Certainly! I have cleared your previous order details from this session.\n\nPlease provide the 17-digit Order ID (for example: `114-1234567-7654321`) or carrier tracking number for the different order you would like to discuss."
+  },
+  {
+    "timestamp": "2026-10-25T17:46:19.242172",
+    "query": "i want to talk about a different order",
+    "intent": "switch_order",
+    "steps": [
+      "1. Intent Routing",
+      "-> Customer requested to switch orders; cleared previous order memory",
+      "2. Retrieve Chunks from Vector DB",
+      "-> Retrieved 3 chunks (top distance: 0.4558)",
+      "3. Document Relevance Grader",
+      "-> Grader rejected docs: Top distance 0.4558 > 0.38 threshold.",
+      "4. Guardrail Fallback"
+    ],
+    "response": "Hello! I am specialized in Amazon Shipping and Delivery policies. The inquiry you asked about is outside my verified shipping documentation.\n\nFor assistance with returns, refunds, payments, or account security, please visit our main Customer Service Hub or contact our general support specialists."
+  },
+  {
+    "timestamp": "2026-10-25T17:47:53.634502",
+    "query": "i want to talk about a different order",
+    "intent": "switch_order",
+    "steps": [
+      "1. Intent Routing",
+      "-> Customer requested to switch orders; cleared previous order memory",
+      "2. Switch Order Handler (Memory Cleared)"
+    ],
+    "response": "Certainly! I have cleared your previous order details from this session.\n\nPlease provide the 17-digit Order ID (for example: `114-1234567-7654321`) or carrier tracking number for the different order you would like to discuss."
+  },
+  {
+    "timestamp": "2026-10-25T17:48:03.123737",
+    "query": "Order 114-1234567-7654321",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n- Item: Kindle Paperwhite\n- Status: [DELAYED IN TRANSIT] - Out for Delivery\n- Carrier: Amazon Logistics (Tracking: TBA123456789000)\n- Specific Reason: Loaded onto Amazon delivery van\n- Revised Delivery: Today by 9:00 PM\n\nNext Steps: Driver is 4 stops away."
+  },
+  {
+    "timestamp": "2026-10-25T17:59:05.748562",
+    "query": "where is my kindle?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n\ud83d\udce6 **Item:** Kindle Paperwhite (16 GB, Black) ($149.99)\n\ud83d\udccd **Status:** **Out for Delivery**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA123456789000`)\n\u2139\ufe0f **Status Details:** Loaded onto Amazon delivery van with your local driver\n\ud83d\udd52 **Expected Delivery / Window:** Today by 9:00 PM\n\n\ud83d\udc49 **Next Steps:** Driver is 4 stops away in your neighborhood.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-25T17:59:23.645332",
+    "query": "i want to talk about a different order",
+    "intent": "switch_order",
+    "steps": [
+      "1. Intent Routing",
+      "-> Customer requested to switch orders; cleared previous order memory",
+      "2. Switch Order Handler (Memory Cleared)"
+    ],
+    "response": "Certainly! I have cleared your previous order details from this active session.\n\nHere are the orders available in your account memory to discuss:\n\n1. \ud83c\udfa7 **Sony WH-1000XM5 Noise-Canceling Headphones** (`112-9874561-3456789`) - *Delayed in Transit*\n2. \ud83d\udcd6 **Kindle Paperwhite (16 GB, Black)** (`114-1234567-7654321`) - *Out for Delivery*\n3. \ud83d\udc5f **Nike Air Zoom Pegasus Running Shoes** (`113-5544332-9988776`) - *Ready for Pickup at Amazon Locker*\n4. \ud83d\udcf1 **Apple iPad Air 11-inch (M2 chip, 128GB)** (`111-7788990-1122334`) - *Preparing for Shipment*\n5. \u2615 **De'Longhi Magnifica Espresso Machine (AmazonGlobal)** (`115-4433221-5566778`) - *Customs Clearance Hold*\n6. \ud83e\udde5 **The North Face ThermoBall Winter Jacket** (`116-2233445-6677889`) - *Marked Delivered (Check Safe Drop)*\n7. \ud83d\ude80 **Lego Star Wars Millennium Falcon Starship Model** (`117-6655443-2211009`) - *Returned & Refunded*\n8. \u26a1 **Anker Prime 100W GaN Fast Charger & USB-C Cable** (`118-9900112-3344556`) - *Same-Day Prime Delivery in Progress*\n\nWhich order would you like to check? You can reply with the **Order ID**, the **item name** (e.g. *'Kindle'*), or the **number** (e.g. *'3'*)."
+  },
+  {
+    "timestamp": "2026-10-25T17:59:23.663004",
+    "query": "what orders do i have in memory?",
+    "intent": "list_orders",
+    "steps": [
+      "1. Intent Routing",
+      "-> Customer requested to view all orders loaded in session memory",
+      "2. List All Orders in Account Memory"
+    ],
+    "response": "\ud83d\udce6 **Your Orders Loaded in Memory (8 Total):**\n\n**[1] \ud83c\udfa7 Sony WH-1000XM5 Noise-Canceling Headphones** ($349.99)\n   \u2022 **Order ID:** `112-9874561-3456789`\n   \u2022 **Status:** Delayed in Transit\n   \u2022 **Carrier:** UPS Air Ground (`1Z999AA10123456784`)\n   \u2022 **Delivery:** Tomorrow by 8:00 PM\n\n**[2] \ud83d\udcd6 Kindle Paperwhite (16 GB, Black)** ($149.99)\n   \u2022 **Order ID:** `114-1234567-7654321`\n   \u2022 **Status:** Out for Delivery\n   \u2022 **Carrier:** Amazon Logistics (`TBA123456789000`)\n   \u2022 **Delivery:** Today by 9:00 PM\n\n**[3] \ud83d\udc5f Nike Air Zoom Pegasus Running Shoes** ($129.00)\n   \u2022 **Order ID:** `113-5544332-9988776`\n   \u2022 **Status:** Ready for Pickup at Amazon Locker\n   \u2022 **Carrier:** Amazon Logistics (`TBA998877665544`)\n   \u2022 **Delivery:** Pickup deadline: Thursday by 9:00 PM (3 days remaining)\n\n**[4] \ud83d\udcf1 Apple iPad Air 11-inch (M2 chip, 128GB)** ($599.00)\n   \u2022 **Order ID:** `111-7788990-1122334`\n   \u2022 **Status:** Preparing for Shipment\n   \u2022 **Carrier:** FedEx Priority Overnight (`Pending dispatch scan`)\n   \u2022 **Delivery:** Friday by 8:00 PM\n\n**[5] \u2615 De'Longhi Magnifica Espresso Machine (AmazonGlobal)** ($699.95)\n   \u2022 **Order ID:** `115-4433221-5566778`\n   \u2022 **Status:** Customs Clearance Hold\n   \u2022 **Carrier:** DHL Express International (`DHL9876543210`)\n   \u2022 **Delivery:** October 28 by 6:00 PM\n\n**[6] \ud83e\udde5 The North Face ThermoBall Winter Jacket** ($220.00)\n   \u2022 **Order ID:** `116-2233445-6677889`\n   \u2022 **Status:** Marked Delivered (Check Safe Drop)\n   \u2022 **Carrier:** USPS Priority Mail (`9400100000000000000000`)\n   \u2022 **Delivery:** Delivered\n\n**[7] \ud83d\ude80 Lego Star Wars Millennium Falcon Starship Model** ($169.99)\n   \u2022 **Order ID:** `117-6655443-2211009`\n   \u2022 **Status:** Returned & Refunded\n   \u2022 **Carrier:** UPS Return Service (`1Z999RET0192837465`)\n   \u2022 **Delivery:** Refund Complete\n\n**[8] \u26a1 Anker Prime 100W GaN Fast Charger & USB-C Cable** ($45.99)\n   \u2022 **Order ID:** `118-9900112-3344556`\n   \u2022 **Status:** Same-Day Prime Delivery in Progress\n   \u2022 **Carrier:** Amazon Prime FastTrack (`TBA887766554433`)\n   \u2022 **Delivery:** Today by 7:30 PM (Est. 45 mins away)\n\n\ud83d\udca1 **You can ask about any of these anytime!** For example:\n- *'Where is my Kindle?'*\n- *'Why is my Sony headphone order delayed?'*\n- *'What is the locker pickup code for my shoes?'*\n- *'Can I cancel my iPad order?'*\n- *'Check order #5'* or provide any 17-digit Order ID directly."
+  },
+  {
+    "timestamp": "2026-10-25T17:59:36.048241",
+    "query": "what is the locker pickup code for my shoes?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #113-5544332-9988776"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #113-5544332-9988776:\n\n\ud83d\udce6 **Item:** Nike Air Zoom Pegasus Running Shoes ($129.00)\n\ud83d\udccd **Status:** **Ready for Pickup at Amazon Locker**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA998877665544`)\n\u2139\ufe0f **Status Details:** Delivered securely into Amazon Locker - 'Acorn' (Whole Foods Market, 5th Ave)\n\ud83d\udd52 **Expected Delivery / Window:** Pickup deadline: Thursday by 9:00 PM (3 days remaining)\n\n\ud83d\udc49 **Next Steps:** Scan pickup barcode or use 6-digit code '482910' at the Locker screen or via Bluetooth.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-25T17:59:36.947546",
+    "query": "why is my espresso machine delayed?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #115-4433221-5566778"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #115-4433221-5566778:\n\n\ud83d\udce6 **Item:** De'Longhi Magnifica Espresso Machine (AmazonGlobal) ($699.95)\n\ud83d\udccd **Status:** **Customs Clearance Hold**\n\ud83d\ude9a **Carrier:** DHL Express International (Tracking: `DHL9876543210`)\n\u2139\ufe0f **Status Details:** Border customs document clearance processing at Port of Entry\n\ud83d\udd52 **Expected Delivery / Window:** October 28 by 6:00 PM\n\n\ud83d\udc49 **Next Steps:** Import duties and taxes are fully covered by your Import Fees Deposit. No action required.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-25T17:59:36.958761",
+    "query": "can not wait need direct now reply",
+    "intent": "urgent_escalation",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: URGENT_ESCALATION",
+      "2. Instant Escalation Handler for Order #115-4433221-5566778"
+    ],
+    "response": "I completely understand this is urgent and waiting does not work for you!\nSince Order #115-4433221-5566778 (De'Longhi Magnifica Espresso Machine (AmazonGlobal)) has experienced delivery issues, I can resolve this immediately right now:\n\n1. [Option 1] - Dispatch a Free Priority Replacement: I will create a priority replacement for De'Longhi Magnifica Espresso Machine (AmazonGlobal) with complimentary One-Day Shipping.\n2. [Option 2] - Issue an Instant Full Refund: I will cancel this shipment and process an immediate full refund of $699.95 to your original payment method.\n3. [Option 3] - Request a Live Phone Callback: A supervisor from our Senior Escalation Desk will call your phone in under 2 minutes.\n\nPlease reply with 'Option 1', 'Option 2', or 'Option 3' and I will execute it immediately!"
+  },
+  {
+    "timestamp": "2026-10-28T15:01:28.330634",
+    "query": "Where is my Kindle?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n\ud83d\udce6 **Item:** Kindle Paperwhite (16 GB, Black) ($149.99)\n\ud83d\udccd **Status:** **Out for Delivery**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA123456789000`)\n\u2139\ufe0f **Status Details:** Loaded onto Amazon delivery van with your local driver\n\ud83d\udd52 **Expected Delivery / Window:** Today by 9:00 PM\n\n\ud83d\udc49 **Next Steps:** Driver is 4 stops away in your neighborhood.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-28T15:02:15.004564",
+    "query": "What should I do if my package is marked delivered but I cannot find it?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Request Order Selection from Account Memory"
+    ],
+    "response": "Hello! I found the following **8 orders** loaded in your account memory:\n\n1. \ud83c\udfa7 **Sony WH-1000XM5 Noise-Canceling Headphones** ($349.99)\n   \u2022 Order ID: `112-9874561-3456789`\n   \u2022 Status: Delayed in Transit\n\n2. \ud83d\udcd6 **Kindle Paperwhite (16 GB, Black)** ($149.99)\n   \u2022 Order ID: `114-1234567-7654321`\n   \u2022 Status: Out for Delivery\n\n3. \ud83d\udc5f **Nike Air Zoom Pegasus Running Shoes** ($129.00)\n   \u2022 Order ID: `113-5544332-9988776`\n   \u2022 Status: Ready for Pickup at Amazon Locker\n\n4. \ud83d\udcf1 **Apple iPad Air 11-inch (M2 chip, 128GB)** ($599.00)\n   \u2022 Order ID: `111-7788990-1122334`\n   \u2022 Status: Preparing for Shipment\n\n5. \u2615 **De'Longhi Magnifica Espresso Machine (AmazonGlobal)** ($699.95)\n   \u2022 Order ID: `115-4433221-5566778`\n   \u2022 Status: Customs Clearance Hold\n\n6. \ud83e\udde5 **The North Face ThermoBall Winter Jacket** ($220.00)\n   \u2022 Order ID: `116-2233445-6677889`\n   \u2022 Status: Marked Delivered (Check Safe Drop)\n\n7. \ud83d\ude80 **Lego Star Wars Millennium Falcon Starship Model** ($169.99)\n   \u2022 Order ID: `117-6655443-2211009`\n   \u2022 Status: Returned & Refunded\n\n8. \u26a1 **Anker Prime 100W GaN Fast Charger & USB-C Cable** ($45.99)\n   \u2022 Order ID: `118-9900112-3344556`\n   \u2022 Status: Same-Day Prime Delivery in Progress\n\n\ud83d\udc49 **How to check an order:** Reply with the **Order ID** (e.g. `114-1234567-7654321`), the **item name** (e.g. *'track my kindle'* or *'where is my ipad?'*), or the **order number** (e.g. *'Order 2'*)."
+  },
+  {
+    "timestamp": "2026-10-28T15:02:24.990900",
+    "query": "What are the general Prime shipping benefits?",
+    "intent": "policy_query",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: POLICY_QUERY",
+      "2. Retrieve Chunks from Vector DB",
+      "-> Retrieved 3 chunks (top distance: 0.1610)",
+      "3. Document Relevance Grader",
+      "-> Grader approved docs: Top distance 0.1610 is within relevance threshold.",
+      "4. Grounded Response Generation"
+    ],
+    "response": "Based on the **Prime Shipping Benefits** document (Section: **Prime Shipping Options**), Amazon Prime members receive exclusive delivery benefits on millions of eligible items fulfilled by Amazon, which include:\n\n1. **Free Two-Day Shipping:** Available on millions of items across all 50 US states with no minimum purchase order required for eligible Prime items (addresses in Alaska, Hawaii, and Puerto Rico may experience extended transit times of 3 to 7 business days).\n2. **Free One-Day Delivery:** Available in thousands of eligible cities and zip codes on select items when ordered by the specified cutoff time to receive items by 9:00 PM the following day.\n3. **Free Same-Day Delivery:** Available in select metropolitan areas on qualifying orders over $25 (orders under $25 incur a $2.99 delivery fee for Prime members) when ordered in the morning to receive delivery by 9:00 PM the same day.\n4. **Amazon Day Delivery:** Choose a designated day of the week to receive all weekly orders grouped together in fewer boxes at no extra charge.\n5. **No-Rush Shipping:** Select \"FREE No-Rush Shipping\" at checkout to earn promotional rewards or instant discounts to spend on digital products, eBooks, or future eligible orders once the package ships."
+  },
+  {
+    "timestamp": "2026-10-28T15:07:07.292097",
+    "query": "Where is my Kindle?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n\ud83d\udce6 **Item:** Kindle Paperwhite (16 GB, Black) ($149.99)\n\ud83d\udccd **Status:** **Out for Delivery**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA123456789000`)\n\u2139\ufe0f **Status Details:** Loaded onto Amazon delivery van with your local driver\n\ud83d\udd52 **Expected Delivery / Window:** Today by 9:00 PM\n\n\ud83d\udc49 **Next Steps:** Driver is 4 stops away in your neighborhood.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-28T15:08:24.400066",
+    "query": "Where is my Kindle?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n\ud83d\udce6 **Item:** Kindle Paperwhite (16 GB, Black) ($149.99)\n\ud83d\udccd **Status:** **Out for Delivery**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA123456789000`)\n\u2139\ufe0f **Status Details:** Loaded onto Amazon delivery van with your local driver\n\ud83d\udd52 **Expected Delivery / Window:** Today by 9:00 PM\n\n\ud83d\udc49 **Next Steps:** Driver is 4 stops away in your neighborhood.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-28T15:08:55.464475",
+    "query": "where is my order?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Request Order Selection from Account Memory"
+    ],
+    "response": "Hello! I found the following **8 orders** loaded in your account memory:\n\n1. \ud83c\udfa7 **Sony WH-1000XM5 Noise-Canceling Headphones** ($349.99)\n   \u2022 Order ID: `112-9874561-3456789`\n   \u2022 Status: Delayed in Transit\n\n2. \ud83d\udcd6 **Kindle Paperwhite (16 GB, Black)** ($149.99)\n   \u2022 Order ID: `114-1234567-7654321`\n   \u2022 Status: Out for Delivery\n\n3. \ud83d\udc5f **Nike Air Zoom Pegasus Running Shoes** ($129.00)\n   \u2022 Order ID: `113-5544332-9988776`\n   \u2022 Status: Ready for Pickup at Amazon Locker\n\n4. \ud83d\udcf1 **Apple iPad Air 11-inch (M2 chip, 128GB)** ($599.00)\n   \u2022 Order ID: `111-7788990-1122334`\n   \u2022 Status: Preparing for Shipment\n\n5. \u2615 **De'Longhi Magnifica Espresso Machine (AmazonGlobal)** ($699.95)\n   \u2022 Order ID: `115-4433221-5566778`\n   \u2022 Status: Customs Clearance Hold\n\n6. \ud83e\udde5 **The North Face ThermoBall Winter Jacket** ($220.00)\n   \u2022 Order ID: `116-2233445-6677889`\n   \u2022 Status: Marked Delivered (Check Safe Drop)\n\n7. \ud83d\ude80 **Lego Star Wars Millennium Falcon Starship Model** ($169.99)\n   \u2022 Order ID: `117-6655443-2211009`\n   \u2022 Status: Returned & Refunded\n\n8. \u26a1 **Anker Prime 100W GaN Fast Charger & USB-C Cable** ($45.99)\n   \u2022 Order ID: `118-9900112-3344556`\n   \u2022 Status: Same-Day Prime Delivery in Progress\n\n\ud83d\udc49 **How to check an order:** Reply with the **Order ID** (e.g. `114-1234567-7654321`), the **item name** (e.g. *'track my kindle'* or *'where is my ipad?'*), or the **order number** (e.g. *'Order 2'*)."
+  },
+  {
+    "timestamp": "2026-10-28T15:16:14.524030",
+    "query": "Where is my order",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Request Order Selection from Account Memory"
+    ],
+    "response": "Here are your recent active orders.\n\n\ud83d\udc49 **Click any order below** to view its full live tracking and carrier details, or reply with the **order number** (e.g. *1*, *2*), **item name** (e.g. *Kindle*), or **Order ID**:\n\n\u2022 **[1]** \ud83c\udfa7 **Sony WH-1000XM5 Noise-Canceling Headphones** ($349.99) \u2014 *Delayed in Transit*\n\u2022 **[2]** \ud83d\udcd6 **Kindle Paperwhite (16 GB, Black)** ($149.99) \u2014 *Out for Delivery*\n\u2022 **[3]** \ud83d\udc5f **Nike Air Zoom Pegasus Running Shoes** ($129.00) \u2014 *Ready for Pickup at Amazon Locker*\n\u2022 **[4]** \ud83d\udcf1 **Apple iPad Air 11-inch (M2 chip, 128GB)** ($599.00) \u2014 *Preparing for Shipment*\n\u2022 **[5]** \u2615 **De'Longhi Magnifica Espresso Machine (AmazonGlobal)** ($699.95) \u2014 *Customs Clearance Hold*\n\u2022 **[6]** \ud83e\udde5 **The North Face ThermoBall Winter Jacket** ($220.00) \u2014 *Marked Delivered (Check Safe Drop)*\n\u2022 **[7]** \ud83d\ude80 **Lego Star Wars Millennium Falcon Starship Model** ($169.99) \u2014 *Returned & Refunded*\n\u2022 **[8]** \u26a1 **Anker Prime 100W GaN Fast Charger & USB-C Cable** ($45.99) \u2014 *Same-Day Prime Delivery in Progress*"
+  },
+  {
+    "timestamp": "2026-10-28T15:16:21.173179",
+    "query": "Where is my order 114-1234567-7654321",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n\ud83d\udce6 **Item:** Kindle Paperwhite (16 GB, Black) ($149.99)\n\ud83d\udccd **Status:** **Out for Delivery**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA123456789000`)\n\u2139\ufe0f **Status Details:** Loaded onto Amazon delivery van with your local driver\n\ud83d\udd52 **Expected Delivery / Window:** Today by 9:00 PM\n\n\ud83d\udc49 **Next Steps:** Driver is 4 stops away in your neighborhood.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-28T15:16:29.942447",
+    "query": "Where is order 2",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #114-1234567-7654321"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #114-1234567-7654321:\n\n\ud83d\udce6 **Item:** Kindle Paperwhite (16 GB, Black) ($149.99)\n\ud83d\udccd **Status:** **Out for Delivery**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA123456789000`)\n\u2139\ufe0f **Status Details:** Loaded onto Amazon delivery van with your local driver\n\ud83d\udd52 **Expected Delivery / Window:** Today by 9:00 PM\n\n\ud83d\udc49 **Next Steps:** Driver is 4 stops away in your neighborhood.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-28T15:16:38.317247",
+    "query": "Where is my order",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Request Order Selection from Account Memory"
+    ],
+    "response": "Here are your recent active orders.\n\n\ud83d\udc49 **Click any order below** to view its full live tracking and carrier details, or reply with the **order number** (e.g. *1*, *2*), **item name** (e.g. *Kindle*), or **Order ID**:\n\n\u2022 **[1]** \ud83c\udfa7 **Sony WH-1000XM5 Noise-Canceling Headphones** ($349.99) \u2014 *Delayed in Transit*\n\u2022 **[2]** \ud83d\udcd6 **Kindle Paperwhite (16 GB, Black)** ($149.99) \u2014 *Out for Delivery*\n\u2022 **[3]** \ud83d\udc5f **Nike Air Zoom Pegasus Running Shoes** ($129.00) \u2014 *Ready for Pickup at Amazon Locker*\n\u2022 **[4]** \ud83d\udcf1 **Apple iPad Air 11-inch (M2 chip, 128GB)** ($599.00) \u2014 *Preparing for Shipment*\n\u2022 **[5]** \u2615 **De'Longhi Magnifica Espresso Machine (AmazonGlobal)** ($699.95) \u2014 *Customs Clearance Hold*\n\u2022 **[6]** \ud83e\udde5 **The North Face ThermoBall Winter Jacket** ($220.00) \u2014 *Marked Delivered (Check Safe Drop)*\n\u2022 **[7]** \ud83d\ude80 **Lego Star Wars Millennium Falcon Starship Model** ($169.99) \u2014 *Returned & Refunded*\n\u2022 **[8]** \u26a1 **Anker Prime 100W GaN Fast Charger & USB-C Cable** ($45.99) \u2014 *Same-Day Prime Delivery in Progress*"
+  },
+  {
+    "timestamp": "2026-10-28T15:17:12.419608",
+    "query": "where is my order?",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Request Order Selection from Account Memory"
+    ],
+    "response": "Here are your recent active orders.\n\n\ud83d\udc49 **Click any order below** to view its full live tracking and carrier details, or reply with the **order number** (e.g. *1*, *2*), **item name** (e.g. *Kindle*), or **Order ID**:\n\n\u2022 **[1]** \ud83c\udfa7 **Sony WH-1000XM5 Noise-Canceling Headphones** ($349.99) \u2014 *Delayed in Transit*\n\u2022 **[2]** \ud83d\udcd6 **Kindle Paperwhite (16 GB, Black)** ($149.99) \u2014 *Out for Delivery*\n\u2022 **[3]** \ud83d\udc5f **Nike Air Zoom Pegasus Running Shoes** ($129.00) \u2014 *Ready for Pickup at Amazon Locker*\n\u2022 **[4]** \ud83d\udcf1 **Apple iPad Air 11-inch (M2 chip, 128GB)** ($599.00) \u2014 *Preparing for Shipment*\n\u2022 **[5]** \u2615 **De'Longhi Magnifica Espresso Machine (AmazonGlobal)** ($699.95) \u2014 *Customs Clearance Hold*\n\u2022 **[6]** \ud83e\udde5 **The North Face ThermoBall Winter Jacket** ($220.00) \u2014 *Marked Delivered (Check Safe Drop)*\n\u2022 **[7]** \ud83d\ude80 **Lego Star Wars Millennium Falcon Starship Model** ($169.99) \u2014 *Returned & Refunded*\n\u2022 **[8]** \u26a1 **Anker Prime 100W GaN Fast Charger & USB-C Cable** ($45.99) \u2014 *Same-Day Prime Delivery in Progress*"
+  },
+  {
+    "timestamp": "2026-10-28T15:17:26.774522",
+    "query": "i want to know about order number 3",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #113-5544332-9988776"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #113-5544332-9988776:\n\n\ud83d\udce6 **Item:** Nike Air Zoom Pegasus Running Shoes ($129.00)\n\ud83d\udccd **Status:** **Ready for Pickup at Amazon Locker**\n\ud83d\ude9a **Carrier:** Amazon Logistics (Tracking: `TBA998877665544`)\n\u2139\ufe0f **Status Details:** Delivered securely into Amazon Locker - 'Acorn' (Whole Foods Market, 5th Ave)\n\ud83d\udd52 **Expected Delivery / Window:** Pickup deadline: Thursday by 9:00 PM (3 days remaining)\n\n\ud83d\udc49 **Next Steps:** Scan pickup barcode or use 6-digit code '482910' at the Locker screen or via Bluetooth.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-28T15:17:42.652877",
+    "query": "can you cancel this order for me",
+    "intent": "out_of_scope",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: OUT_OF_SCOPE",
+      "4. Guardrail Fallback"
+    ],
+    "response": "Hello! I am specialized in Amazon Shipping and Delivery policies. The inquiry you asked about is outside my verified shipping documentation.\n\nFor assistance with returns, refunds, payments, or account security, please visit our main Customer Service Hub or contact our general support specialists."
+  },
+  {
+    "timestamp": "2026-10-28T15:18:03.526498",
+    "query": "Track Order 112-9874561-3456789",
+    "intent": "order_tracking",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: ORDER_TRACKING",
+      "2. Query Live Order API for #112-9874561-3456789"
+    ],
+    "response": "Thank you! Here are the live tracking details for Order #112-9874561-3456789:\n\n\ud83d\udce6 **Item:** Sony WH-1000XM5 Noise-Canceling Headphones ($349.99)\n\ud83d\udccd **Status:** **Delayed in Transit**\n\ud83d\ude9a **Carrier:** UPS Air Ground (Tracking: `1Z999AA10123456784`)\n\u2139\ufe0f **Status Details:** Severe winter weather grounding flights at Louisville, KY distribution hub\n\ud83d\udd52 **Expected Delivery / Window:** Tomorrow by 8:00 PM\n\n\ud83d\udc49 **Next Steps:** Please allow 48 hours for tracking updates. If not received by tomorrow, a full refund or replacement can be issued.\n\n*(To ask about another order, type 'switch order' or mention another item!)*"
+  },
+  {
+    "timestamp": "2026-10-28T15:18:17.442345",
+    "query": "What shipping benefits do Amazon Prime members get?",
+    "intent": "policy_query",
+    "steps": [
+      "1. Intent Routing",
+      "-> Classified intent as: POLICY_QUERY",
+      "2. Retrieve Chunks from Vector DB",
+      "-> Retrieved 3 chunks (top distance: 0.1720)",
+      "3. Document Relevance Grader",
+      "-> Grader approved docs: Top distance 0.1720 is within relevance threshold.",
+      "4. Grounded Response Generation"
+    ],
+    "response": "Based on the **Prime Shipping Benefits** document, **Prime Shipping Options** section, Amazon Prime members receive the following delivery benefits on millions of eligible items fulfilled by Amazon:\n\n1. **Free Two-Day Shipping**: Available on millions of items across all 50 US states with no minimum purchase order required (addresses in Alaska, Hawaii, and Puerto Rico may experience extended transit times of 3 to 7 business days).\n2. **Free One-Day Delivery**: Available in thousands of eligible cities and zip codes on select items when ordered by the specified cutoff time to receive items by 9:00 PM the following day.\n3. **Free Same-Day Delivery**: Available in select metropolitan areas on qualifying orders over $25 (orders under $25 incur a $2.99 delivery fee for Prime members) when ordered in the morning before 12:00 PM noon for delivery by 9:00 PM the same day.\n4. **Amazon Day Delivery**: Choose a designated day of the week to receive all weekly orders grouped together in fewer boxes at no extra charge.\n5. **No-Rush Shipping**: Select \"FREE No-Rush Shipping\" at checkout to earn promotional rewards or instant discounts to spend on digital products, eBooks, or future eligible orders once the package ships."
+  }
+]
